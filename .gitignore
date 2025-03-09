@@ -1,6 +1,5 @@
 # Ignored files
-countries.csv
-countries2.csv
+*files/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
