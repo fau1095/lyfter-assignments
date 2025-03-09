@@ -8,7 +8,7 @@ def read_file(file_path):
             
             
     return songs            
-songs = read_file('songs.txt')
+songs = read_file('files/songs.txt')
 
 def write_on_a_new_file(songs):
     with open('new_file.txt', 'w') as file:
