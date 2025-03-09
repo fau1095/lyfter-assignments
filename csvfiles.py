@@ -1,36 +1,38 @@
 import csv
 
-countries_list = [
-    {
-        'name': 'Brazil',
-        'population': 213000000,
-        'capital': 'Brasília'
-    },
-    {
-        'name': 'Argentina',
-        'population': 45000000,
-        'capital': 'Buenos Aires'
-    },
-    {
-        'name': 'Uruguay',
-        'population': 3400000,
-        'capital': 'Montevideo'
-    }
-]
-country_headers = ('name', 'population', 'capital')
+
+def ask_user_for_amount_of_videogames_to_register():
+    return int(input('Enter the amount of video games you want to register: '))
+#ask the user for the videogames information
+def ask_for_videogame_information():
+    videogame_info = []
+    for i in range(ask_user_for_amount_of_videogames_to_register()):
+        videogame_info.append({
+                'name': input('Enter the name of the video game: '),
+                'gender': input('Enter the name of the gender: '),
+                'classification': input('Enter the name of the classification: '),
+                'publisher': input('Enter the name of the publisher: ')
+            })
+    return videogame_info    
+
+videogame_headers = ('name', 'gender', 'classification','publisher')
+videogame_info = ask_for_videogame_information()
     
+#write the csv file with commas    
 def write_csv_file(file_path, data, headers):
+    
     with open(file_path, 'w', encoding='utf-8') as file:
         writer = csv.DictWriter(file, headers)
         writer.writeheader()
-        writer.writerows(data)
+        writer.writerows(data)        
         
-write_csv_file('files/countries.csv', countries_list, country_headers)
 
-def write_csv_file2(file_path, data, headers):
-  with open(file_path, 'w', encoding='utf-8') as file:
-    writer = csv.DictWriter(file, headers)
-    writer.writeheader()
-    writer.writerows(data)
+write_csv_file('files/games.csv', videogame_info, videogame_headers)
 
-write_csv_file('files/countries2.csv', countries_list, countries_list[0].keys())
+#write the csv file with tabs instead of commas
+def write_csv_file_with_tabs(file_path, data, headers):
+    with open(file_path + '_tab.csv', 'w', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, headers, delimiter='\t')
+        writer.writeheader()
+        writer.writerows(data)
+write_csv_file_with_tabs('files/games', videogame_info, videogame_headers)        
