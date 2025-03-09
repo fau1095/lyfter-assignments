@@ -11,7 +11,7 @@ def read_file(file_path):
 songs = read_file('files/songs.txt')
 
 def write_on_a_new_file(songs):
-    with open('new_file.txt', 'w') as file:
+    with open('files/new_file.txt', 'w') as file:
         #write the lines in the new file
         songs.sort()
         for line in songs:
